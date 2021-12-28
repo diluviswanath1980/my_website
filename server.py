@@ -75,9 +75,12 @@ def submit_form():
 			#print(email,subject,message)
 			data = request.form.to_dict()
 			# print(data)
-			write_to_file(data)
-			write_to_csv(data)
-			return render_template('thankyou.html',name=name)
+			if len(data['name']) == 0 and len(data['email']) == 0:
+				return render_template('blank_contact.html')
+			else:
+				write_to_file(data)
+				write_to_csv(data)
+				return render_template('thankyou.html',name=name)
 		except:
 			return 'Did not save to Database'
 	else:
