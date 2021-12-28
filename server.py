@@ -75,14 +75,10 @@ def submit_form():
 			#print(email,subject,message)
 			data = request.form.to_dict()
 			# print(data)
-			# write_to_file(data)
+			write_to_file(data)
 			write_to_csv(data)
 			return render_template('thankyou.html',name=name)
 		except:
 			return 'Did not save to Database'
 	else:
 		return '<p>Something went wrong.Please try again.</>'
-
-
-
-	
